@@ -1,37 +1,37 @@
 package Questao1;
 import java.util.Scanner;
 
-public class Soma{
-
-
-
+public class Soma{  
     public static void main(String[] args) {
-        double soma = 0;
-        String res;
         Scanner teclado = new Scanner(System.in);
-        do{
-            try {
-                System.out.println("Digite um numero: ");
-                double n = teclado.nextDouble();
-                
-                soma+=n;
-                System.out.println("Deseja continuar S/N ? ");
-                res = teclado.next();
-            } catch(NumberFormatException e){
+        System.out.print("Digite o número de argumentos: ");
+        int numArgs = teclado.nextInt();
+        String[] argsArray = new String[numArgs];
+        for (int i = 0; i < numArgs; i++) {
+            System.out.print("Digite o argumento " + (i + 1) + ": ");
+            argsArray[i] = teclado.next();
+        }
+        teclado.close();
 
-            }
+        SomaArgumentos somaArgs = new SomaArgumentos();
+        double soma = somaArgs.somarArgumentos(argsArray);
+        System.out.println("A soma dos argumentos é: " + soma);
+    }
+}
 
-        }while(res.equals("S") || res.equals("s"));
+class SomaArgumentos {
+    public double somarArgumentos(String[] args) {
+        double soma = 0.0;
         for (String arg : args) {
             try {
                 double valor = Double.parseDouble(arg);
                 soma += valor;
             } catch (NumberFormatException e) {
-                // Caso o argumento não possa ser convertido para double, ele é ignorado
+                // argumento inválido, ignorar
             }
         }
-        System.out.println("A soma de todos os numeros é : " + soma);
-    
+        return soma;
     }
-    
 }
+
+

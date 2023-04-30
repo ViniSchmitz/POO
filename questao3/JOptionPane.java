@@ -1,5 +1,7 @@
 package questao3;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
+
 public class JOptionPane {
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
@@ -11,6 +13,8 @@ public class JOptionPane {
         float notaTrabalho = teclado.nextFloat();
         float media = (nota1 +nota2 + notaTrabalho)/3;
         System.out.println("A media é: " + media);
+        JOptionPane.showMessageDialog("A media é: " + media, JOptionPane.INFORMATION_MESSAGE);
+
     
     }
 }
